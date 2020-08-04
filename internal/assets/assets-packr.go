@@ -5,4 +5,4 @@
 // and any other packr generated files.
 package assets
 
-import _ "github.com/gjbae1212/go-counter-badge/assets/packrd"
+import _ "github.com/gjbae1212/go-counter-badge/internal/assets/packrd"

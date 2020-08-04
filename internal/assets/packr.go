@@ -21,3 +21,8 @@ func GetAsset(path string) ([]byte, error) {
 func GetVeraSansFont() ([]byte, error) {
 	return box.Find("vera_sans/Vera.ttf")
 }
+
+// GetVerdana returns verdana font.
+func GetVerdanaFont() ([]byte, error) {
+	return box.Find("verdana/verdana.ttf")
+}

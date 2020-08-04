@@ -52,3 +52,23 @@ func TestGetVeraSansFont(t *testing.T) {
 		}
 	}
 }
+
+func TestGetVerdanaFont(t *testing.T) {
+	assert := assert.New(t)
+
+	tests := map[string]struct {
+		isErr bool
+	}{
+		"ok": {
+			isErr: false,
+		},
+	}
+
+	for _, t := range tests {
+		bys, err := GetVerdanaFont()
+		assert.Equal(t.isErr, err != nil)
+		if err != nil {
+			assert.NotEmpty(bys)
+		}
+	}
+}

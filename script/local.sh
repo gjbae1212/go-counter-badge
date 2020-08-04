@@ -12,7 +12,7 @@ function test
 
 function packr
 {
-  cd $CURRENT/assets && packr2
+  cd $CURRENT/internal/assets && packr2
 }
 
 CMD=$1
