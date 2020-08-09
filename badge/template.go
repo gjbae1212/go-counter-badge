@@ -4,27 +4,27 @@ import "strings"
 
 // flat Badge template
 var flatBadgeTemplate = strings.TrimSpace(`
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{{.dx}}" height="{{.dy}}">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{{.Dx}}" height="{{.Dy}}">
  <linearGradient id="smooth" x2="0" y2="100%">
    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
    <stop offset="1" stop-opacity=".1"/>
  </linearGradient>
 
  <mask id="round">
-   <rect width="{{.dx}}" height="{{.dy}}" rx="{{.rx}}" ry="{{.ry}}" fill="#fff"/>
+   <rect width="{{.Dx}}" height="{{.Dy}}" rx="{{.Rx}}" ry="{{.Ry}}" fill="#fff"/>
  </mask>
 
  <g mask="url(#round)">
-   <rect width="{{.left.rect.bound.dx}}" height="{{.left.rect.bound.dy}}" fill="{{.left.rect.color}}"/>
-   <rect x="{{.left.rect.bound.dx}}" width="{{.right.rect.bound.dx}}" height="{{.right.rect.bound.dy}}" fill="{{.right.rect.color}}"/>
-   <rect width="{{.dx}}" height="{{.dy}}" fill="url(#smooth)"/>
+   <rect width="{{.Left.Rect.Bound.Dx}}" height="{{.Left.Rect.Bound.Dy}}" fill="{{.Left.Rect.Color}}"/>
+   <rect x="{{.Left.Rect.Bound.Dx}}" width="{{.Right.Rect.Bound.Dx}}" height="{{.Right.Rect.Bound.Dy}}" fill="{{.Right.Rect.Color}}"/>
+   <rect width="{{.Dx}}" Height="{{.Dy}}" fill="url(#smooth)"/>
  </g>
 
- <g fill="#fff" text-anchor="middle" font-family="{{.fontFamily}}" font-size="{{.fontSize}}"> 
-   <text x="{{.left.text.bound.x}}" y="{{.left.text.bound.y}}" fill="#010101" fill-opacity=".3">{{.left.text.msg | html}}</text>
-   <text x="{{.left.text.bound.x}}" y="{{.left.text.bound.y - 1}}" fill="{{.left.text.color}}">{{.left.text.msg | html}}</text>
-   <text x="{{.right.text.bound.x}}" y="{{.right.text.bound.y}}" fill="#010101" fill-opacity=".3">{{.right.text.msg | html}}</text>
-   <text x="{{.right.text.bound.x}}" y="{{.right.text.bound.y -1}}" fill="{{.right.text.color}}">{{.right.text.msg | html}}</text>
+ <g fill="#fff" text-anchor="middle" font-family="{{.FontFamily}}" font-size="{{.FontSize}}"> 
+   <text x="{{.Left.Text.Bound.X}}" y="{{.Left.Text.Bound.Y}}" fill="#010101" fill-opacity=".3">{{.Left.Text.Msg | html}}</text>
+   <text x="{{.Left.Text.Bound.X}}" y="{{.Left.Text.Bound.AddY -1}}" fill="{{.Left.Text.Color}}">{{.Left.Text.Msg | html}}</text>
+   <text x="{{.Right.Text.Bound.X}}" y="{{.Right.Text.Bound.Y}}" fill="#010101" fill-opacity=".3">{{.Right.Text.Msg | html}}</text>
+   <text x="{{.Right.Text.Bound.X}}" y="{{.Right.Text.Bound.AddY -1}}" fill="{{.Right.Text.Color}}">{{.Right.Text.Msg | html}}</text>
  </g>
 </svg>
 `)

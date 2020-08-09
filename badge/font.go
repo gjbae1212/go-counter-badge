@@ -1,6 +1,7 @@
 package badge
 
 import (
+	"fmt"
 	"sync"
 
 	"github.com/gjbae1212/go-counter-badge/internal/assets"
@@ -12,8 +13,8 @@ import (
 type FontType int
 
 const (
-	veraSans FontType = 1 + iota
-	verdana
+	VeraSans FontType = 1 + iota
+	Verdana
 )
 
 const (
@@ -136,5 +137,16 @@ func init() {
 				Hinting: font.HintingFull,
 			}),
 		},
+	}
+}
+
+func getFontDrawer(fontType FontType) (fontDrawer, error) {
+	switch fontType {
+	case VeraSans:
+		return veraSansDrawer, nil
+	case Verdana:
+		return verdanaDrawer, nil
+	default:
+		return nil, fmt.Errorf("[err] NewWriter empty params")
 	}
 }

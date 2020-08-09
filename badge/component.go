@@ -5,37 +5,47 @@ type color string
 
 // bound is a struct presenting bound.
 type bound struct {
-	dx float64
-	dy float64
-	x  float64
-	y  float64
+	Dx float64
+	Dy float64
+	X  float64
+	Y  float64
+}
+
+func (b bound) AddX(i float64) float64 {
+	return b.X + i
+}
+
+func (b bound) AddY(i float64) float64 {
+	return b.Y + i
 }
 
 // rect is a struct presenting rect.
 type rect struct {
-	color color
-	bound bound
+	Color color
+	Bound bound
 }
 
 // text is a struct presenting text.
 type text struct {
-	msg   string
-	color color
-	bound bound
+	Msg   string
+	Color color
+	Bound bound
 }
 
 // badge is a struct presenting badge.
 type badge struct {
-	rect rect
-	text text
+	Rect rect
+	Text text
 }
 
 // flatBadge is a struct presenting flat badge.
 type flatBadge struct {
-	left  badge   // left Badge
-	right badge   // right Badge
-	rx    string  // horizon radius
-	ry    string  // vertical radius
-	dx    float64 // Width
-	dy    float64 // Height
+	FontFamily string // font family
+	FontSize   int
+	Left       badge   // left Badge
+	Right      badge   // right Badge
+	Rx         string  // horizon radius
+	Ry         string  // vertical radius
+	Dx         float64 // Width
+	Dy         float64 // Height
 }

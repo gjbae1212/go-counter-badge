@@ -8,7 +8,7 @@ import (
 	"golang.org/x/image/math/fixed"
 )
 
-func TestFontM_FixedPointToFloatingPoint(t *testing.T) {
+func TestFontM_FixedPointToPoint(t *testing.T) {
 	assert := assert.New(t)
 
 	drawer := &fontM{}
@@ -79,5 +79,28 @@ func TestFontM_FontFamily(t *testing.T) {
 
 	for _, t := range tests {
 		assert.Equal(t.output, t.drawer.getFontFamily())
+	}
+}
+
+func TestGetFontDrawer(t *testing.T) {
+	assert := assert.New(t)
+
+	tests := map[string]struct {
+		input  FontType
+		output fontDrawer
+		isErr  bool
+	}{
+		"fail":      {input: 0, isErr: true},
+		"vera sans": {input: VeraSans, isErr: false, output: veraSansDrawer},
+		"verdana":   {input: Verdana, isErr: false, output: verdanaDrawer},
+	}
+
+	for _, t := range tests {
+		drawer, err := getFontDrawer(t.input)
+		assert.Equal(t.isErr, err != nil)
+		if err == nil {
+			assert.Equal(t.output, drawer)
+		}
+
 	}
 }

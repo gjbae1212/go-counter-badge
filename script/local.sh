@@ -15,6 +15,22 @@ function packr
   cd $CURRENT/internal/assets && packr2
 }
 
+function bench
+{
+  go test -v $(go list ./... | grep -v vendor) -run none -bench . -benchtime 3s -benchmem
+}
+
+function bench_pprof
+{
+  go test github.com/gjbae1212/go-counter-badge/badge -run none -bench=BenchmarkBadgeWriter_RenderFlatBadge -benchtime 3s -benchmem -memprofile mem.out
+  go tool pprof -http=127.0.0.1:8000 mem.out
+}
+
+function escape
+{
+  go build -gcflags '-m -m' github.com/gjbae1212/go-counter-badge/badge
+}
+
 CMD=$1
 shift
 $CMD $*
