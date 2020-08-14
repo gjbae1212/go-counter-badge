@@ -17,7 +17,7 @@ var flatBadgeTemplate = strings.TrimSpace(`
  <g mask="url(#round)">
    <rect width="{{.Left.Rect.Bound.Dx}}" height="{{.Left.Rect.Bound.Dy}}" fill="{{.Left.Rect.Color}}"/>
    <rect x="{{.Left.Rect.Bound.Dx}}" width="{{.Right.Rect.Bound.Dx}}" height="{{.Right.Rect.Bound.Dy}}" fill="{{.Right.Rect.Color}}"/>
-   <rect width="{{.Dx}}" Height="{{.Dy}}" fill="url(#smooth)"/>
+   <rect width="{{.Dx}}" height="{{.Dy}}" fill="url(#smooth)"/>
  </g>
 
  <g fill="#fff" text-anchor="middle" font-family="{{.FontFamily}}" font-size="{{.FontSize}}"> 

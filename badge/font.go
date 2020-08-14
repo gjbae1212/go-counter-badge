@@ -129,7 +129,7 @@ func init() {
 	verdanaDrawer = &fontM{
 		fontSize:   fontSize,
 		extraDx:    extraVerdanaDx,
-		fontFamily: fontFamilyVeraSans,
+		fontFamily: fontFamilyVerdana,
 		drawer: &font.Drawer{
 			Face: truetype.NewFace(verdanaFont, &truetype.Options{
 				Size:    fontDPI,
