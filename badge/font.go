@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/gjbae1212/go-counter-badge/internal/assets"
+	assets "github.com/gjbae1212/go-counter-badge/internal/assets"
 	"github.com/golang/freetype/truetype"
 	"golang.org/x/image/font"
 	"golang.org/x/image/math/fixed"
@@ -92,7 +92,7 @@ var verdanaDrawer fontDrawer
 
 func init() {
 	// initialize vera sans font drawer.
-	veraTTF, err := assets.GetVeraSansFont()
+	veraTTF, err := assets.Asset("vera_sans/Vera.ttf")
 	if err != nil {
 		panic(err)
 	}
@@ -116,7 +116,7 @@ func init() {
 	}
 
 	// initialize verdana font drawer.
-	verdanaTTF, err := assets.GetVerdanaFont()
+	verdanaTTF, err := assets.Asset("verdana/verdana.ttf")
 	if err != nil {
 		panic(err)
 	}

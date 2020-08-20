@@ -7,5 +7,8 @@
 
 **go-counter-badge** can create Badges formatted SVG.
 
+## ETC
+It's using free icons([simple-icons](https://github.com/simple-icons/simple-icons))
+ 
 ## License
 This project is following The MIT.

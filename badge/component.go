@@ -38,10 +38,29 @@ type badge struct {
 	Text text
 }
 
+// icon is a struct presenting icon.
+type icon struct {
+	Base64 string
+	Bound  bound
+}
+
 // flatBadge is a struct presenting flat badge.
 type flatBadge struct {
 	FontFamily string // font family
 	FontSize   int
+	Left       badge   // left Badge
+	Right      badge   // right Badge
+	Rx         string  // horizon radius
+	Ry         string  // vertical radius
+	Dx         float64 // Width
+	Dy         float64 // Height
+}
+
+// iconBadge is a struct presenting icon badge.
+type iconBadge struct {
+	FontFamily string // font family
+	FontSize   int
+	Icon       icon    // icon
 	Left       badge   // left Badge
 	Right      badge   // right Badge
 	Rx         string  // horizon radius

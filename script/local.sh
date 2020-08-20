@@ -10,9 +10,10 @@ function test
    go test -v $(go list ./... | grep -v vendor) --count 1 -race
 }
 
-function packr
+function go-bindata
 {
-  cd $CURRENT/internal/assets && packr2
+  cd $CURRENT/internal/assets
+  go-bindata -pkg assets ./...
 }
 
 function bench
@@ -22,7 +23,7 @@ function bench
 
 function bench_pprof
 {
-  go test github.com/gjbae1212/go-counter-badge/badge -run none -bench=BenchmarkBadgeWriter_RenderFlatBadge -benchtime 3s -benchmem -memprofile mem.out
+  go test github.com/gjbae1212/go-counter-badge/badge -run none -bench=BenchmarkBadgeWriter_RenderIconBadge -benchtime 3s -benchmem -memprofile mem.out
   go tool pprof -http=127.0.0.1:8000 mem.out
 }
 
