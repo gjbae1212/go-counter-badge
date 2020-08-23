@@ -15,7 +15,7 @@ const (
 	defaultIconWidth   = float64(15)
 	defaultIconHeight  = float64(15)
 	defaultIconX       = float64(3)
-	defaultIconY       = float64(3)
+	defaultIconY       = float64(2.5)
 )
 
 var (
