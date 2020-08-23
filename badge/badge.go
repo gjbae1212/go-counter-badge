@@ -18,6 +18,15 @@ const (
 	defaultIconY       = float64(3)
 )
 
+var (
+	iconsMap = map[string]Icon{}
+)
+
+type Icon struct {
+	Name   string
+	origin []byte
+}
+
 type Badge struct {
 	FontType FontType
 
@@ -109,17 +118,18 @@ func (fb *badgeWriter) RenderIconBadge(b Badge, iconName, iconColor string) ([]b
 	if iconName == "" {
 		return nil, fmt.Errorf("[err] RenderIconBadge empty params")
 	}
-	iconBytes, err := assets.Asset("icons/" + iconName + ".svg")
-	if err != nil {
+	icon, ok := iconsMap[iconName]
+	if !ok {
 		return nil, fmt.Errorf("[err] RenderIconBadge not found icons")
 	}
+
 	drawer, err := getFontDrawer(b.FontType)
 	if err != nil {
 		return nil, fmt.Errorf("[err] RenderFlatBadge %w", err)
 	}
 
 	// fill color
-	iconsvg := string(iconBytes)
+	iconsvg := string(icon.origin)
 	iconsvg = strings.Replace(iconsvg, "<svg", fmt.Sprintf("<svg fill=\"%s\" ", iconColor), 1)
 
 	// default dy
@@ -201,4 +211,27 @@ func NewWriter() (Writer, error) {
 		tmplIconBadge: tmplIconBadge,
 	}
 	return writer, nil
+}
+
+// GetIconsMap returns cloned iconsMap.
+func GetIconsMap() map[string]Icon {
+	cloned := make(map[string]Icon, len(iconsMap))
+	for k, v := range iconsMap {
+		cloned[k] = v
+	}
+	return cloned
+}
+
+func init() {
+	iconNames, err := assets.AssetDir("icons")
+	if err != nil {
+		panic(err)
+	}
+	for _, name := range iconNames {
+		bin, err := assets.Asset("icons/" + name)
+		if err != nil {
+			panic(err)
+		}
+		iconsMap[name] = Icon{Name: name, origin: bin}
+	}
 }

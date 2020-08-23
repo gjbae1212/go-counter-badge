@@ -107,7 +107,7 @@ func TestBadgeWriter_RenderIconBadge(t *testing.T) {
 			RightBackgroundColor: "#4c1",
 			XRadius:              "3",
 			YRadius:              "3",
-		}, iconName: "appveyor", iconColor: "#00B3E0"},
+		}, iconName: "appveyor.svg", iconColor: "#00B3E0"},
 		"verasans-round": {input: Badge{
 			FontType:             VeraSans,
 			LeftText:             "verasans-round",
@@ -118,7 +118,7 @@ func TestBadgeWriter_RenderIconBadge(t *testing.T) {
 			RightBackgroundColor: "#4c1",
 			XRadius:              "auto",
 			YRadius:              "auto",
-		}, iconName: "appveyor", iconColor: "#3c5688"},
+		}, iconName: "appveyor.svg", iconColor: "#3c5688"},
 		"verdana-flat": {input: Badge{
 			FontType:             Verdana,
 			LeftText:             "verdana-flat",
@@ -129,7 +129,7 @@ func TestBadgeWriter_RenderIconBadge(t *testing.T) {
 			RightBackgroundColor: "#502038",
 			XRadius:              "3",
 			YRadius:              "3",
-		}, iconName: "amazon", iconColor: "#0000ff"},
+		}, iconName: "amazon.svg", iconColor: "#0000ff"},
 		"verdana-round": {input: Badge{
 			FontType:             Verdana,
 			LeftText:             "verdand-round",
@@ -140,7 +140,7 @@ func TestBadgeWriter_RenderIconBadge(t *testing.T) {
 			RightBackgroundColor: "#4c1",
 			XRadius:              "auto",
 			YRadius:              "auto",
-		}, iconName: "babel", iconColor: "#109556"},
+		}, iconName: "babel.svg", iconColor: "#109556"},
 		"verdana-hits": {input: Badge{
 			FontType:             Verdana,
 			LeftText:             "hits",
@@ -151,7 +151,7 @@ func TestBadgeWriter_RenderIconBadge(t *testing.T) {
 			RightBackgroundColor: "#4c1",
 			XRadius:              "auto",
 			YRadius:              "auto",
-		}, iconName: "aircall", iconColor: "#ffffff"},
+		}, iconName: "aircall.svg", iconColor: "#ffffff"},
 	}
 
 	writer, err := NewWriter()
@@ -161,6 +161,21 @@ func TestBadgeWriter_RenderIconBadge(t *testing.T) {
 		assert.Equal(t.isErr, err != nil)
 		fmt.Println(string(result))
 	}
+}
+
+func TestGetIconsMap(t *testing.T) {
+	assert := assert.New(t)
+
+	tests := map[string]struct {
+	}{
+		"success": {},
+	}
+
+	for _, _ = range tests{
+		icons := GetIconsMap()
+		assert.Equal(len(icons), len(iconsMap))
+	}
+
 }
 
 func BenchmarkBadgeWriter_RenderFlatBadge(b *testing.B) {
@@ -193,6 +208,6 @@ func BenchmarkBadgeWriter_RenderIconBadge(b *testing.B) {
 			RightBackgroundColor: "#4c1",
 			XRadius:              "auto",
 			YRadius:              "auto",
-		}, "appveyor", "#00B3E0")
+		}, "appveyor.svg", "#00B3E0")
 	}
 }
