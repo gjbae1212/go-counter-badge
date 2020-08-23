@@ -128,9 +128,11 @@ func (fb *badgeWriter) RenderIconBadge(b Badge, iconName, iconColor string) ([]b
 		return nil, fmt.Errorf("[err] RenderFlatBadge %w", err)
 	}
 
-	// fill color
+	// fill icon color
 	iconsvg := string(icon.origin)
-	iconsvg = strings.Replace(iconsvg, "<svg", fmt.Sprintf("<svg fill=\"%s\" ", iconColor), 1)
+	if iconColor != "" {
+		iconsvg = strings.Replace(iconsvg, "<svg", fmt.Sprintf("<svg fill=\"%s\" ", iconColor), 1)
+	}
 
 	// default dy
 	dy := defaultBadgeHeight
