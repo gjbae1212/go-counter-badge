@@ -24,7 +24,7 @@ var (
 
 type Icon struct {
 	Name   string
-	origin []byte
+	Origin []byte
 }
 
 type Badge struct {
@@ -129,7 +129,7 @@ func (fb *badgeWriter) RenderIconBadge(b Badge, iconName, iconColor string) ([]b
 	}
 
 	// fill icon color
-	iconsvg := string(icon.origin)
+	iconsvg := string(icon.Origin)
 	if iconColor != "" {
 		iconsvg = strings.Replace(iconsvg, "<svg", fmt.Sprintf("<svg fill=\"%s\" ", iconColor), 1)
 	}
@@ -234,6 +234,6 @@ func init() {
 		if err != nil {
 			panic(err)
 		}
-		iconsMap[name] = Icon{Name: name, origin: bin}
+		iconsMap[name] = Icon{Name: name, Origin: bin}
 	}
 }
