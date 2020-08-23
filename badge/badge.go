@@ -12,8 +12,8 @@ import (
 
 const (
 	defaultBadgeHeight = float64(20)
-	defaultIconWidth   = float64(14)
-	defaultIconHeight  = float64(14)
+	defaultIconWidth   = float64(15)
+	defaultIconHeight  = float64(15)
 	defaultIconX       = float64(3)
 	defaultIconY       = float64(3)
 )
